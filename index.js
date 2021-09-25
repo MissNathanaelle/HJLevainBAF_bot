@@ -1,6 +1,7 @@
 // Require the necessary discord.js classes
 const { Client, Intents } = require('discord.js');
 const { token } = require('./config.json');
+var { salonid } = require('./config.json')
 
 
 // Create a new client instance
@@ -13,7 +14,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', async msg => {
 	
-	var salons = ['890728221908295700','890527394832719912', '883497875227697196']
+	var salons = salonid.threadid
 	for(let i = 0; i < salons.length; i++) {
 		if(msg.channel.id === salons[i]){
 			const thread = await msg.startThread({

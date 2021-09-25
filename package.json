@@ -1,0 +1,22 @@
+{
+  "name": "hjlevainbot",
+  "version": "1.0.0",
+  "description": "Bot pour lassociation Habitat Jeunes Le Levain Bassins a flots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MaelysNath",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "nodemon": "^2.0.13"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}

@@ -43,11 +43,11 @@ var embed= new MessageEmbed()
 client.on('messageCreate', async msg => {
 	
 	//Salons Actualités / Activités / emploi-formation
-	let salons = ["890728221908295700","890527394832719912", "883497875227697196","887727682689839135"]
+	let salons = ["890728221908295700","890527394832719912", "883497875227697196","887727682689839135","890711065619488819"]
 	for(let i = 0; i < salons.length; i++) {
 		if(msg.channel.id === salons[i]){
 			const thread = await msg.startThread({
-				name: "Commentaires",
+				name: "Clique ici pour répondre",
 				autoArchiveDuration: 1440,
 			});
 			console.log(`Created thread: ${thread.name}`);
@@ -60,7 +60,7 @@ client.on('messageCreate', async msg => {
 	let salons1 = ("891668671234179122");
 		if(msg.channel.id === salons1){
 			const thread = await msg.startThread({
-				name: "Commentaires",
+				name: "Clique ici pour répondre",
 				autoArchiveDuration: 1440,
 			});
 			console.log(`Created thread: ${thread.name}`);
@@ -71,7 +71,7 @@ client.on('messageCreate', async msg => {
 	let salons2 = ("886155751649845248");
 		if(msg.channel.id === salons2){
 			const thread = await msg.startThread({
-				name: "Réponses",
+				name: "Clique ici pour répondre",
 				autoArchiveDuration: 1440,
 			});
 			console.log(`Created thread: ${thread.name}`);

@@ -3,15 +3,41 @@ const fs = require("fs");
 const { Client, Intents } = require('discord.js');
 const { token } = require('./config.json');
 var { idsalons } = require('./config.json');
-
+const { MessageEmbed } = require('discord.js');
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
 
 // When the client is ready, run this code (only once)
 client.on('ready', () => {
 	console.log('Ready!');
 });
+
+//member add
+
+client.on('guildMemberAdd', member => {
+	
+let role = member.guild.roles.cache.find(r => r.id === "887798844543361114");
+const channel = member.guild.channels.cache.get("883497875227697195");
+
+var embed= new MessageEmbed()
+    .setTitle("Nouveau membre")
+    .setColor("GREEN")
+    .setDescription("\`\`\` Je te souhaite la bienvenue  " + member.user.username + "  !\`\`\`")
+    .setThumbnail(member.user.displayAvatarURL())
+    .setTimestamp()
+    .setFooter("Habitat Jeunes le Levain")
+	channel.send({ embeds: [embed] });
+	member.roles.add(role);
+
+    
+});
+
+
+
+
+
+
 
 client.on('messageCreate', async msg => {
 	

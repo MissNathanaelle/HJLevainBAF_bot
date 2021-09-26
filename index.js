@@ -6,11 +6,12 @@ var { idsalons } = require('./config.json');
 const { MessageEmbed } = require('discord.js');
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
 // When the client is ready, run this code (only once)
 client.on('ready', () => {
 	console.log('Ready!');
+	client.user.setActivity("Coucou :)");
 });
 
 //member add
@@ -41,7 +42,8 @@ var embed= new MessageEmbed()
 
 client.on('messageCreate', async msg => {
 	
-	let salons = ["890728221908295700","890527394832719912", "883497875227697196"]
+	//Salons Actualités / Activités / emploi-formation
+	let salons = ["890728221908295700","890527394832719912", "883497875227697196","887727682689839135"]
 	for(let i = 0; i < salons.length; i++) {
 		if(msg.channel.id === salons[i]){
 			const thread = await msg.startThread({
@@ -49,8 +51,33 @@ client.on('messageCreate', async msg => {
 				autoArchiveDuration: 1440,
 			});
 			console.log(`Created thread: ${thread.name}`);
+			msg.react('❤️');
 		}
 	}	
+
+	//salons: idées de sortie & partages
+
+	let salons1 = ("891668671234179122");
+		if(msg.channel.id === salons1){
+			const thread = await msg.startThread({
+				name: "Commentaires",
+				autoArchiveDuration: 1440,
+			});
+			console.log(`Created thread: ${thread.name}`);
+			msg.react('❤️');
+		}
+
+	// salons: aide et conseils
+	let salons2 = ("886155751649845248");
+		if(msg.channel.id === salons2){
+			const thread = await msg.startThread({
+				name: "Réponses",
+				autoArchiveDuration: 1440,
+			});
+			console.log(`Created thread: ${thread.name}`);
+			msg.react('✅');
+		}
+	
 });
 
 

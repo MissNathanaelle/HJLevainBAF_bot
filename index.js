@@ -1,18 +1,22 @@
 const fs = require("fs");
 // Require the necessary discord.js classes
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, Collection } = require('discord.js');
 const { token } = require('./config.json');
 var { idsalons } = require('./config.json');
 const { MessageEmbed } = require('discord.js');
-
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
-// When the client is ready, run this code (only once)
-client.on('ready', () => {
-	console.log('Ready!');
-	client.user.setActivity("Coucou :)");
-});
+const config = require("./config.json");
+client.commands = new Collection();
+client.aliases = new Collection();
+client.categories = fs.readdirSync("./commands/");
+client.prefix = config.prefix;
+
+["command", "event"].forEach(handler => {
+    require(`./handlers/${handler}`)(client);
+   
+  });
 
 //member add
 
@@ -33,10 +37,6 @@ var embed= new MessageEmbed()
 
     
 });
-
-
-
-
 
 
 
